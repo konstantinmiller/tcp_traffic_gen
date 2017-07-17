@@ -1,0 +1,8 @@
+testing
+trafficGen32
+trafficGen64
+.project
+.cproject
+traces*
+.DS_Store
+*~

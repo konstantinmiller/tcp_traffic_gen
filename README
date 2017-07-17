@@ -1,0 +1,32 @@
+1 COMPILATION
+
+To compile on 32-bit machine, say
+
+make trafficGen32
+
+To compile on 64-bit machine, say
+
+make trafficGen64
+
+2 CREATING INTERFACE FOR MONITORING
+
+To create a wireless monitoring device that will be used to collect radiotap headers, say
+
+sudo iw dev wlan0 interface add mon0 type monitor
+sudo ifconfig mon0 up
+
+where wlan0 is the name of your wireless interface. You can find it out by saying
+
+iwconfig
+
+You need to create the monitoring device only once. After that it should work until rebooting.
+
+3 RUNNING TRAFFIC GENERATOR
+
+To run the traffic generator, say
+
+sudo ./trafficGen32 --role=receiver --active --passive-ip=54.76.150.9 --passive-port=54341 --dev-name=wlan0 --dev-name-mon=mon0 --trace-duration=1800 --log-dir=/path/to/output/directory --tcp-info-log-interval=1000
+
+Replace /path/to/output/directory by the path to the output directory.
+Replace wlan0 by the name of your wireless interface.
+Use trafficGen32 or trafficGen64 depending on your machine's architecture.
